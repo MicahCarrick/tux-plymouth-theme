@@ -1,41 +1,30 @@
-# tux-plymouth-theme
-╔═════════════════════════════════════════════════════════════════════════════════╗
-║ TUX 4 UBUNTU - TUX PLYMOUTH THEME                   © The Tux4Ubuntu Initiative ║
-║ – Let's bring Tux to Ubuntu                               http://tux4ubuntu.org ║
-╠═════════════════════════════════════════════════════════════════════════════════╣
-║                                                                                 ║
-║   Ubuntu is nice but it needs to TUXedo up with Tux! Through this Plymouth      ║
-║   theme you'll see Tux greet you at boot and shutdown.                          ║
-║                                                                                 ║
-║   Read more and support our cause at <http://tux4ubuntu.org>                    ║
-║                                                                                 ║
-╚═════════════════════════════════════════════════════════════════════════════════╝
+# Linux "Tux" Penguin Boot Splash Screen
+
+![example splash](example2.png)
+
+A [Plymouth](https://www.freedesktop.org/wiki/Software/Plymouth/) boot splash screen depicting the ["Tux"](https://en.wikipedia.org/wiki/Tux_(mascot)) mascot.
+
+This is a fork of [tux-plymouth-theme](https://github.com/Tux4Ubuntu/tux-plymouth-theme) by *tux4ubuntu* with some changes to suite my personal preferences:
 
 
-INSTALL INSTRUCTIONS
+* Removed shutdown images--shows the same simple "Tux" image on boot and on shutdown
+* Removed progress bar
+* Extended the width of encryption password input field
+* Does not render bullets in the password input if the characters exceed with width ofthe input box
 
-    For the latest version and install instructions visit:
-    [tux4ubuntu](http://tux4ubuntu.org)
+## Installation
 
+These instructions have been verified on Fedora 40 See also See: [plymouth-set-default-theme](https://man.archlinux.org/man/plymouth-set-default-theme.1.en) man page.
 
-CREDITS AND ATTRIBUTION
- 
-    THEME written and designed by:
-        Tuxedo Joe (Josef Norlin) <http://github.com/tuxedojoe>. 
-        Based on the example provided with the "script plugin" written by:
-        Charlie Brej   <cbrej@cs.man.ac.uk>
-        Documentation and instructions where found here: <https://wiki.ubuntu.com/Artwork/Documentation/Plymouth>
-        and here: <https://www.freedesktop.org/wiki/Software/Plymouth/Scripts/>
-        With additions from Ubuntu 18.04 LTS plymouth logo, created by:
-        Alberto Milone <alberto.milone@canonical.com>
+Copy src to Plymouth theme folder:
 
-    TUX ILLUSTRATION by:
-        Larry Ewing, at: http://isc.tamu.edu/~lewing/linux/
-        Redrawn in Inkscape by:
-        Garrett LeSage: https://github.com/garrett/Tux
-        License: Public domain http://creativecommons.org/publicdomain/zero/1.0/
+```shell
+sudo mkdir /usr/share/plymouth/themes/tux-plymouth-theme
+sudo cp -r src/* /usr/share/plymouth/themes/tux-plymouth-theme
+```
 
-    CHAT BUBBLE FONT by:
-        Jayvee Enaguas, at: http://harvettfox96.deviantart.com/
-        Downloaded from: http://www.dafont.com/suplexmentary-comic-nc.font?l[]=10&l[]=1
-        License: 100% Free
+Set `tux-plymouth-theme` as the default Plymouth theme and rebuild the image:
+
+```shell
+sudo plymouth-set-default-theme -R tux-plymouth-theme
+```
